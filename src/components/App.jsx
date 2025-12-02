@@ -29,7 +29,8 @@ function App() {
     globalThis.localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
 
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const {good, neutral, bad} = feedback;
+  const totalFeedback = good + neutral + bad;
 
   return (
     <>

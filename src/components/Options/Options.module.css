@@ -1,0 +1,9 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.buttons button {
+  text-transform: capitalize;
+}

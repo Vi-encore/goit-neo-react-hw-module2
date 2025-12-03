@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 
-export default function Feedback({ feedback, totalFeedback }) {
+export default function Feedback({
+  feedback,
+  totalFeedback,
+  positiveFeedback,
+}) {
   const { good, neutral, bad } = feedback;
   return (
     <ul className="feedback-wrap">
@@ -8,7 +12,7 @@ export default function Feedback({ feedback, totalFeedback }) {
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
       <li>Total: {totalFeedback}</li>
-      <li>Positive: {Math.round((good / totalFeedback) * 100)}%</li>
+      <li>Positive: {positiveFeedback}%</li>
     </ul>
   );
 }
@@ -20,4 +24,5 @@ Feedback.propTypes = {
     bad: PropTypes.number.isRequired,
   }),
   totalFeedback: PropTypes.number.isRequired,
+  positiveFeedback: PropTypes.number.isRequired,
 };

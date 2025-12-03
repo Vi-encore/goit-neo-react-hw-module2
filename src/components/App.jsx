@@ -22,15 +22,16 @@ function App() {
   };
 
   function handleReset() {
-    setFeedback({ ...feedback, good: 0, neutral: 0, bad: 0 });
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
   }
 
   useEffect(() => {
     globalThis.localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
 
-  const {good, neutral, bad} = feedback;
+  const { good, neutral, bad } = feedback;
   const totalFeedback = good + neutral + bad;
+  const positiveFeedback = Math.round((good / totalFeedback) * 100);
 
   return (
     <>
@@ -44,7 +45,11 @@ function App() {
       {totalFeedback === 0 ? (
         <Notification />
       ) : (
-        <Feedback feedback={feedback} totalFeedback={totalFeedback} />
+        <Feedback
+          feedback={feedback}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       )}
     </>
   );
